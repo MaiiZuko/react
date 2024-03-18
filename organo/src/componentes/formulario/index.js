@@ -1,36 +1,65 @@
 import './Formulario.css'
-import CampoTexto from '../campoTexto/index'
+import CampoTexto from '../campoTexto'
 import ListaSuspensa from '../listaSuspensa'
 import Botao from '../botao';
+import { useState } from 'react';
 
-const Formulario = () => {
+const Formulario = (props) => {
 
-    const times = {
-        'Suporte': 'Suporte',
-        'Mid': 'Mid',
-        'Adc': 'Adc',
-        'Jungle': 'Jungle',
-        'Top': 'Top',
-    };
+    const times = [
+        'Suporte',
+        'Mid',
+        'Adc',
+        'Jungle',
+        'Top',
+    ]
 
-    const timesArray = Object.values(times);
+    const [nome, setNome] = useState('')
+    const [cargo, setCargo] = useState('')
+    const [imagem, setImagem] = useState('')
+    const [time, setTime] = useState('')
 
     const aoSalvar = (evento) => {
-        {/* previne o comportamento padrão - para a pagina n se recarregar e perder o submit */}
         evento.preventDefault()
-        console.log('Form foi submetido')
+        props.aoColaboradorCadastrado({
+            nome,
+            cargo,
+            imagem,
+            time
+        })
     }
 
     return (
         <section className="formulario">
-            {/* on submit - quando alguem submeter vou chamar a função salva - quando o formulario for submetido essa é a função que quero executar */}
             <form onSubmit={aoSalvar}>
                 <h2>Preencha os dados para criar o card do colaborador</h2>
-                <CampoTexto obrigatorio={true} label="Nome" placeholder="Digite seu nome" />
-                <CampoTexto obrigatorio={true} label="Cargo" placeholder="Digite seu cargo" />
-                <CampoTexto label="Imagem" placeholder="Digite o endereço da imagem" />
-                <ListaSuspensa obrigatorio={true} label="Time" itens={timesArray} />
-                {/* <Botao texto="Criar Card"/> devolve o texto */}
+                <CampoTexto 
+                    obrigatorio={true}
+                    label="Nome"
+                    placeholder="Digite seu nome" 
+                    valor={nome}
+                    aoAlterado={valor => setNome(valor)}
+                />
+                <CampoTexto
+                    obrigatorio={true}
+                    label="Cargo"
+                    placeholder="Digite seu cargo" 
+                    valor={cargo}
+                    aoAlterado={valor => setCargo(valor)}
+                />
+                <CampoTexto
+                    label="Imagem"
+                    placeholder="Digite o endereço da imagem" 
+                    valor={imagem}
+                    aoAlterado={valor => setImagem(valor)}
+                />
+                <ListaSuspensa
+                    obrigatorio={true}
+                    label="Time" 
+                    itens={times}
+                    valor={time}
+                    aoAlterado={valor => setTime(valor)}
+                />
                 <Botao>
                     Criar Card
                 </Botao>
