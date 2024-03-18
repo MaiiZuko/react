@@ -21,7 +21,7 @@ const Formulario = (props) => {
 
     const aoSalvar = (evento) => {
         evento.preventDefault()
-        props.aoColaboradorCadastrado({
+        props.aoCampeaoCadastrado({
             nome,
             cargo,
             imagem,
