@@ -8,7 +8,7 @@ function App() {
   const times = [
     {
       nome: 'Suporte',
-      corPrimaria: '#bfdbbf',
+      corPrimaria: '#bgdbbf',
       corSecundaria: '#abe7bd',
     },
     {

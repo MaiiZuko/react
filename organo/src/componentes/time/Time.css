@@ -1,11 +1,16 @@
 .time {
     text-align: center;
     padding: 32px;
-}
-
-.time h3 {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .time h3 {
     font-size: 32px;
     border-bottom: 4px solid;
-    display: inline-block;
     padding-bottom: 8px;
-}
+  }
+  
+  .selection {
+    flex-grow: 1;
+  }
