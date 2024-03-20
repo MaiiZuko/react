@@ -8,7 +8,7 @@ function App() {
   const times = [
     {
       nome: 'Suporte',
-      corPrimaria: '#bgdbbf',
+      corPrimaria: '#bfdbbf',
       corSecundaria: '#abe7bd',
     },
     {
@@ -42,9 +42,14 @@ function App() {
   return (
     <div className="App">
       <Banner />
-      <Formulario aoCampeaoCadastrado={campeao => aoNovoCampeaoAdicionado(campeao)} />
-      {times.map(time => <Time key={time.nome} nome={time.nome} corPrimaria={time.corPrimaria}
-        corSecundaria={time.corSecundaria} />)}
+      <Formulario times={times.map(time => time.nome)} aoCampeaoCadastrado={campeao => aoNovoCampeaoAdicionado(campeao)} />
+
+      {times.map(time => <Time
+        key={time.nome}
+        nome={time.nome}
+        corPrimaria={time.corPrimaria}
+        corSecundaria={time.corSecundaria} 
+        campeoes={campeoes.filter(campeao => campeao.time === time.nome)} />)}
     </div>
   );
 }
