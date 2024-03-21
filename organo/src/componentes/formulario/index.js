@@ -3,7 +3,6 @@ import CampoTexto from '../campoTexto'
 import ListaSuspensa from '../listaSuspensa'
 import Botao from '../botao';
 import { useState } from 'react';
-
 const Formulario = (props) => {
 
     const [nome, setNome] = useState('')
@@ -13,18 +12,22 @@ const Formulario = (props) => {
 
     const aoSalvar = (evento) => {
         evento.preventDefault()
-        props.aoCampeaoCadastrado({
+        props.aoColaboradorCadastrado({
             nome,
             cargo,
             imagem,
             time
         })
+        setNome('')
+        setCargo('')
+        setImagem('')
+        setTime('')
     }
 
     return (
         <section className="formulario">
             <form onSubmit={aoSalvar}>
-                <h2>Preencha os dados para criar o card do Campeao</h2>
+                <h2>Preencha os dados para criar o card do colaborador</h2>
                 <CampoTexto 
                     obrigatorio={true}
                     label="Nome"
