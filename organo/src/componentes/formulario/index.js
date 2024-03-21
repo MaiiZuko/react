@@ -1,8 +1,9 @@
+import { useState } from 'react'
+import Botao from '../Botao'
+import CampoTexto from '../CampoTexto'
+import ListaSuspensa from '../ListaSuspensa'
 import './Formulario.css'
-import CampoTexto from '../campoTexto'
-import ListaSuspensa from '../listaSuspensa'
-import Botao from '../botao';
-import { useState } from 'react';
+
 const Formulario = (props) => {
 
     const [nome, setNome] = useState('')
